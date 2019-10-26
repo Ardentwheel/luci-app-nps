@@ -3,7 +3,7 @@
 
 START=50
 SERVICE_WRITE_PID=1
-#SERVICE_DAEMONIZE=1
+SERVICE_DAEMONIZE=1
 
 LOGFILE="/var/etc/nps.log"
 tmpconf="/tmp/etc/nps.conf"
@@ -54,7 +54,7 @@ start() {
 		stop
 	else
 		logger -t FRPC 'Starting Nps service'
-		service_start /usr/bin/npc -config=$tmpconf -log_level=$Log_level &
+		service_start /usr/bin/npc -config=$tmpconf -log_level=$Log_level -log_path=$LOGFILE
 	fi
 
 	return 0
